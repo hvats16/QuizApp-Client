@@ -40,7 +40,6 @@ export default function Quiz() {
 	}
 
 	function onChecked(check) {
-		console.log(check);
 		setChecked(check);
 	}
 

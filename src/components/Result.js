@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Result.css";
 
@@ -11,6 +11,7 @@ import {
 import ResultTable from "./ResultTable";
 
 /** import actions  */
+import { usePublishResult } from "../hooks/setResult";
 import { resetAllAction } from "../Redux/question_reducer";
 import { resetResultAction } from "../Redux/result_reducer";
 
@@ -21,14 +22,19 @@ export default function Result() {
 		result: { result, userId },
 	} = useSelector((state) => state);
 
-	useEffect(() => {
-		console.log(flag);
-	});
-
 	const totalPoints = queue.length * 10;
 	const attempts = attempts_Number(result);
 	const earnPoints = earnPoints_Number(result, answers, 10);
 	const flag = flagResult(totalPoints, earnPoints);
+
+	/** store user result */
+	usePublishResult({
+		result,
+		username: userId,
+		attempts,
+		points: earnPoints,
+		achived: flag ? "Passed" : "Failed",
+	});
 
 	function onRestart() {
 		dispatch(resetAllAction());
@@ -42,7 +48,7 @@ export default function Result() {
 			<div className="result flex-center">
 				<div className="flex">
 					<span>Username</span>
-					<span className="bold">Harshit</span>
+					<span className="bold">{userId || ""}</span>
 				</div>
 				<div className="flex">
 					<span>Total Quiz Points : </span>

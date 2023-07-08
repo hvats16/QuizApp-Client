@@ -9,6 +9,7 @@ export default function Questions({ onChecked }) {
 	const [checked, setChecked] = useState(undefined);
 	const { trace } = useSelector((state) => state.questions);
 	const result = useSelector((state) => state.result.result);
+	// eslint-disable-next-line no-unused-vars
 	const [{ isLoading, apiData, serverError }] = useFetchQestion();
 
 	const questions = useSelector(
@@ -18,6 +19,7 @@ export default function Questions({ onChecked }) {
 
 	useEffect(() => {
 		dispatch(updateResult({ trace, checked }));
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [checked]);
 
 	function onSelect(i) {
