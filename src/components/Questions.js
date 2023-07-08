@@ -49,7 +49,7 @@ export default function Questions({ onChecked }) {
 							{q}
 						</label>
 						<div
-							className={`check ${result[trace] == i ? "checked" : ""}`}></div>
+							className={`check ${result[trace] === i ? "checked" : ""}`}></div>
 					</li>
 				))}
 			</ul>
