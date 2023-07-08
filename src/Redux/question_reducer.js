@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// create reducer with initial value
-const questionReducer = createSlice({
+/** create reducer */
+export const questionReducer = createSlice({
 	name: "questions",
 	initialState: {
 		queue: [],
@@ -19,4 +19,5 @@ const questionReducer = createSlice({
 });
 
 export const { startExamAction } = questionReducer.actions;
-export default questionReducer;
+
+export default questionReducer.reducer;

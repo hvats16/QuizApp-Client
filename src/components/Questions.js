@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import data from "../database/data";
+import { useSelector } from "react-redux";
 
 export default function Questions() {
+	const state = useSelector((state) => state);
 	const [checked, setChecked] = useState(undefined);
 
 	const question = data[0];
 
 	useEffect(() => {
-		console.log(question);
+		// console.log(question);
 	});
 
 	function onSelect() {
-		console.log("radio button change");
+		// console.log("radio button change");
 	}
 
 	return (
